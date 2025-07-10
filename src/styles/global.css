@@ -1,1 +1,30 @@
-@import "tailwindcss";
+/* src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fuente pixel art */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+/* Configuración básica para pixel art */
+* {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+html {
+  font-family: 'Orbitron', monospace;
+}
+
+/* Clase básica para texto pixelado */
+.font-pixel {
+  font-family: 'Orbitron', monospace;
+}
+
+/* Fondo Mario básico */
+.mario-bg {
+  background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 60%, #228B22 60%, #228B22 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
