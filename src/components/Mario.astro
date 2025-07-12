@@ -1,0 +1,78 @@
+---
+interface Props {
+  size?: "small" | "medium" | "large";
+  variant?: "classic" | "super" | "fire";
+  isJumping?: boolean;
+  isWalking?: boolean;
+  className?: string;
+}
+
+const {
+  size = "medium",
+  variant = "classic",
+  isJumping = false,
+  isWalking = false,
+  className = "",
+} = Astro.props;
+
+const sizeClasses = {
+  small: "w-8 h-8",
+  medium: "w-16 h-16",
+  large: "w-24 h-24",
+};
+
+const variantColors = {
+  classic: "bg-red-500",
+  super: "bg-red-600",
+  fire: "bg-orange-500",
+};
+---
+
+<div
+  class={`mario-sprite ${sizeClasses[size]} ${className} ${isJumping ? "mario-jump" : ""} ${isWalking ? "mario-walk" : ""}`}
+>
+  <!-- Gorro de Mario -->
+  <div
+    class={`mario-hat ${variantColors[variant]} w-full h-3 rounded-t-full relative`}
+  >
+    <div
+      class="mario-hat-shine bg-white w-2 h-1 rounded-full absolute top-0 left-2"
+    >
+    </div>
+  </div>
+
+  <!-- face -->
+  <div class="mario-face bg-orange-200 w-full h-4 relative">
+    <!-- eye -->
+    <div class="mario-eyes flex justify-between px-2 pt-1">
+      <div class="mario-eye bg-black w-1 h-1 rounded-full"></div>
+      <div class="mario-eye bg-black w-1 h-1 rounded-full"></div>
+    </div>
+
+    <!-- Bigote -->
+    <div class="mario-mustache bg-black w-4 h-1 rounded-full mx-auto mt-1">
+    </div>
+  </div>
+
+  <!-- shrit -->
+  <div class={`mario-shirt ${variantColors[variant]} w-full h-5 relative`}>
+    <!-- Btns -->
+    <div class="mario-buttons flex justify-center space-x-1 pt-1">
+      <div class="mario-button bg-yellow-400 w-1 h-1 rounded-full"></div>
+      <div class="mario-button bg-yellow-400 w-1 h-1 rounded-full"></div>
+    </div>
+
+    <!-- straps -->
+    <div class="mario-suspenders">
+      <div class="mario-suspender bg-blue-600 w-1 h-full absolute left-1 top-0">
+      </div>
+      <div
+        class="mario-suspender bg-blue-600 w-1 h-full absolute right-1 top-0"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Overol -->
+  <div class="mario-overalls bg-blue-600 w-full h-4 rounded-b-lg"></div>
+</div>

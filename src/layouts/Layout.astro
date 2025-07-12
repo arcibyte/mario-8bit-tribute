@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
+import Mario from "../components/Mario.astro";
 
 interface Props {
   title: string;
@@ -51,6 +52,7 @@ const {
       lives={lives}
       time={time}
     />
+    <Mario />
 
     <!-- main -->
     <main class="flex-1">
