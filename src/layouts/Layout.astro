@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Mario from "../components/Mario.astro";
-
+import GameElements from "../components/GameElements.astro";
 interface Props {
   title: string;
   score?: number;
@@ -22,7 +22,6 @@ const {
 } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -40,11 +39,10 @@ const {
 
     <meta
       name="description"
-      content="Homenaje a Super Mario Bros en estilo 8-bit"
+      content="Tribute to Super Mario Bros in 8-bit style"
     />
   </head>
   <body class="min-h-screen mario-bg">
-    <!-- header with props -->
     <Header
       score={score}
       coins={coins}
@@ -52,9 +50,44 @@ const {
       lives={lives}
       time={time}
     />
-    <Mario />
 
-    <!-- main -->
+    <div class="mario-world-container">
+      <div class="mario-world-stage">
+        <div style="position: absolute; left: 100px; bottom: 120px;">
+          <Mario />
+        </div>
+
+        <!-- Floating coins -->
+        <GameElements element="coin" position="floating" x={200} />
+        <GameElements element="coin" position="floating" x={250} />
+        <GameElements element="coin" position="floating" x={300} />
+
+        <!-- Brick blocks -->
+        <GameElements element="block" position="floating" x={180} />
+        <GameElements element="block" position="floating" x={220} />
+        <GameElements element="block" position="floating" x={260} />
+
+        <!-- Mushroom on ground -->
+        <GameElements element="mushroom" position="ground" x={400} />
+
+        <!-- Star at high level -->
+        <GameElements element="star" position="high" x={500} />
+
+        <!-- Fire flower -->
+        <GameElements element="flower" position="floating" x={600} />
+
+        <!-- Flag at the end -->
+        <GameElements element="flag" position="ground" x={1000} size="large" />
+
+        <!-- More distributed elements -->
+        <GameElements element="coin" position="ground" x={350} />
+        <GameElements element="coin" position="ground" x={450} />
+        <GameElements element="block" position="ground" x={700} />
+        <GameElements element="mushroom" position="floating" x={800} />
+      </div>
+    </div>
+
+    <!-- Main content -->
     <main class="flex-1">
       <slot />
     </main>
@@ -64,6 +97,8 @@ const {
     </footer>
   </body>
 </html>
+
+<!-- Global styles -->
 
 <style is:global>
   .mario-bg {

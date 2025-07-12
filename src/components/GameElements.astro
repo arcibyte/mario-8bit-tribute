@@ -1,0 +1,96 @@
+---
+interface Props {
+  element?: 'coin' | 'block' | 'mushroom' | 'flower' | 'star' | 'flag';
+  position: "floating" | "ground" | "high"; 
+  x: number;
+  size?: 'small' | 'medium' | 'large';
+  isAnimated?: boolean;
+  isCollected?: boolean;
+  className?: string;
+}
+
+const { 
+  element = 'coin',
+  size = 'medium',
+  isAnimated = true,
+  isCollected = false,
+  className = ''
+} = Astro.props;
+
+const sizeClasses = {
+  small: 'w-6 h-6',
+  medium: 'w-8 h-8',
+  large: 'w-12 h-12'
+};
+---
+
+<div class={`game-element ${sizeClasses[size]} ${className} ${isAnimated ? 'element-animated' : ''} ${isCollected ? 'element-collected' : ''}`}>
+  
+  {element === 'coin' && (
+    <div class="mario-coin bg-yellow-500 w-full h-full rounded-full border-2 border-yellow-700 relative flex items-center justify-center">
+      <div class="coin-symbol text-yellow-900 font-bold text-sm">$</div>
+      <div class="coin-shine bg-white w-2 h-2 rounded-full absolute top-0 left-1 opacity-70"></div>
+    </div>
+  )}
+  
+  {element === 'block' && (
+    <div class="mario-block bg-orange-600 w-full h-full border-2 border-orange-800 relative">
+      <div class="block-pattern">
+        <div class="block-line bg-orange-800 w-full h-px absolute top-1/3"></div>
+        <div class="block-line bg-orange-800 w-full h-px absolute bottom-1/3"></div>
+        <div class="block-line bg-orange-800 w-px h-full absolute left-1/4"></div>
+        <div class="block-line bg-orange-800 w-px h-full absolute right-1/4"></div>
+      </div>
+    </div>
+  )}
+  
+  {element === 'mushroom' && (
+    <div class="mario-mushroom w-full h-full relative">
+      <!-- Mushroom head -->
+      <div class="mushroom-head bg-red-500 w-full h-3/4 rounded-t-full border-2 border-red-700 relative">
+        <div class="mushroom-spots flex justify-center space-x-1 pt-1">
+          <div class="mushroom-spot bg-white w-1 h-1 rounded-full"></div>
+          <div class="mushroom-spot bg-white w-1 h-1 rounded-full"></div>
+        </div>
+      </div>
+      <!-- Mushroom stem -->
+      <div class="mushroom-stem bg-orange-200 w-2/3 h-1/4 mx-auto border border-orange-400"></div>
+    </div>
+  )}
+  
+  {element === 'flower' && (
+    <div class="mario-flower w-full h-full relative">
+      <!-- Fire flower -->
+      <div class="flower-petals bg-orange-500 w-full h-3/4 rounded-full border-2 border-red-600 relative">
+        <div class="flower-center bg-yellow-400 w-2 h-2 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="flower-flames">
+          <div class="flame bg-red-500 w-1 h-2 absolute -top-1 left-1"></div>
+          <div class="flame bg-red-500 w-1 h-2 absolute -top-1 right-1"></div>
+        </div>
+      </div>
+      <!-- Stem -->
+      <div class="flower-stem bg-green-500 w-1 h-1/4 mx-auto border border-green-700"></div>
+    </div>
+  )}
+  
+  {element === 'star' && (
+    <div class="mario-star w-full h-full relative">
+      <div class="star-body bg-yellow-400 w-full h-full relative flex items-center justify-center border-2 border-yellow-600">
+        <div class="star-shape text-yellow-900 font-bold text-lg">★</div>
+        <div class="star-shine bg-white w-1 h-1 rounded-full absolute top-1 left-1 opacity-80"></div>
+      </div>
+    </div>
+  )}
+  
+  {element === 'flag' && (
+    <div class="mario-flag w-full h-full relative">
+      <!-- Flag pole -->
+      <div class="flag-pole bg-gray-600 w-1 h-full absolute left-0 border border-gray-800"></div>
+      <!-- Flag banner -->
+      <div class="flag-banner bg-red-500 w-3/4 h-1/2 absolute top-0 left-1 border border-red-700">
+        <div class="flag-pattern bg-white w-1 h-1 absolute top-1 left-1"></div>
+      </div>
+    </div>
+  )}
+  
+</div>
