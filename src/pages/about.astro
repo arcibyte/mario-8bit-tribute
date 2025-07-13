@@ -1,0 +1,206 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="About - Mario 8bit Tribute"
+  score={125000}
+  coins={42}
+  world="1-3"
+  lives={3}
+  time={380}
+>
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Hero Section -->
+    <section class="text-center mb-12">
+      <div class="relative inline-block">
+        <h1
+          class="font-pixel text-6xl md:text-8xl text-yellow-400 mb-4 pixel-shadow"
+        >
+          ABOUT
+        </h1>
+        <div
+          class="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full animate-bounce"
+        >
+        </div>
+      </div>
+      <p class="font-pixel text-xl text-white mb-8">
+        A pixelated tribute to the world's most famous plumber
+      </p>
+    </section>
+
+    <!-- Mario Story Section -->
+    <section class="mb-12">
+      <div
+        class="bg-gradient-to-r from-red-600 to-red-700 rounded-lg p-6 mb-8 border-4 border-white"
+      >
+        <h2 class="font-pixel text-3xl text-white mb-4 flex items-center">
+          <span
+            class="w-8 h-8 bg-red-500 rounded-full mr-4 flex items-center justify-center"
+          >
+            🍄
+          </span>
+          Mario's Story
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <p class="text-white leading-relaxed">
+              <strong class="text-yellow-400">Super Mario Bros.</strong> was released
+              in 1985 for the Nintendo Entertainment System, revolutionizing video
+              games and becoming the most influential game of all time.
+            </p>
+            <p class="text-white leading-relaxed">
+              Created by <strong class="text-yellow-400"
+                >Shigeru Miyamoto</strong
+              >, Mario started as "Jumpman" in Donkey Kong (1981) before
+              becoming the iconic plumber we know today.
+            </p>
+          </div>
+          <div class="bg-blue-600 p-4 rounded border-2 border-white">
+            <h3 class="font-pixel text-xl text-white mb-2">Fun Facts</h3>
+            <ul class="text-white space-y-1 text-sm">
+              <li>• Originally called "Jumpman"</li>
+              <li>• His mustache was due to technical limitations</li>
+              <li>• The Mushroom Kingdom has 32 worlds</li>
+              <li>• Peach has been kidnapped over 100 times</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Power-ups Section -->
+    <section class="mb-12">
+      <div
+        class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-6 border-4 border-white"
+      >
+        <h2 class="font-pixel text-3xl text-white mb-4 flex items-center">
+          <span
+            class="w-8 h-8 bg-blue-500 rounded-full mr-4 flex items-center justify-center"
+          >
+            🎨
+          </span>
+          The Art of Power-ups
+        </h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <!-- Power-ups Showcase -->
+          <div class="bg-black p-6 rounded border-2 border-white text-center">
+            <div class="text-6xl mb-4">🍄</div>
+            <h3 class="font-pixel text-xl text-red-400 mb-2">Super Mushroom</h3>
+            <p class="text-white text-sm">
+              Classic power-up that makes Mario grow bigger
+            </p>
+          </div>
+
+          <div class="bg-black p-6 rounded border-2 border-white text-center">
+            <div class="text-6xl mb-4">🌟</div>
+            <h3 class="font-pixel text-xl text-yellow-400 mb-2">Super Star</h3>
+            <p class="text-white text-sm">
+              Temporary invincibility with epic music
+            </p>
+          </div>
+
+          <div class="bg-black p-6 rounded border-2 border-white text-center">
+            <div class="text-6xl mb-4">🔥</div>
+            <h3 class="font-pixel text-xl text-orange-400 mb-2">Fire Flower</h3>
+            <p class="text-white text-sm">Allows Mario to throw fireballs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Worlds and Enemies Section -->
+    <section class="mb-12">
+      <div
+        class="bg-gradient-to-r from-green-600 to-green-700 rounded-lg p-6 border-4 border-white"
+      >
+        <h2 class="font-pixel text-3xl text-white mb-4 flex items-center">
+          <span
+            class="w-8 h-8 bg-green-500 rounded-full mr-4 flex items-center justify-center"
+          >
+            🏰
+          </span>
+          Mushroom Kingdom Worlds
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Worlds -->
+          <div class="space-y-4">
+            <div class="bg-blue-500 p-4 rounded border-2 border-white">
+              <h3 class="font-pixel text-xl text-white mb-2">🌱 World 1-1</h3>
+              <p class="text-white text-sm">
+                The most iconic level. Green hills, pipes, and the first Goomba
+                in history.
+              </p>
+            </div>
+            <div class="bg-orange-500 p-4 rounded border-2 border-white">
+              <h3 class="font-pixel text-xl text-white mb-2">🏜️ World 2-1</h3>
+              <p class="text-white text-sm">
+                Underground desert with piranhas and moving platforms.
+              </p>
+            </div>
+            <div class="bg-gray-600 p-4 rounded border-2 border-white">
+              <h3 class="font-pixel text-xl text-white mb-2">🏰 World 1-4</h3>
+              <p class="text-white text-sm">
+                The first castle! Lava, axes, and the fake Bowser.
+              </p>
+            </div>
+          </div>
+          <!-- Enemies -->
+          <div class="space-y-4">
+            <div class="bg-black p-4 rounded border-2 border-white">
+              <h3 class="font-pixel text-xl text-red-400 mb-3">
+                Classic Enemies
+              </h3>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div class="text-center">
+                  <div class="text-2xl mb-1">👹</div>
+                  <span class="text-white">Goomba</span>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl mb-1">🐢</div>
+                  <span class="text-white">Koopa</span>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl mb-1">🌿</div>
+                  <span class="text-white">Piranha</span>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl mb-1">🔥</div>
+                  <span class="text-white">Bowser</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-purple-600 p-4 rounded border-2 border-white">
+              <h3 class="font-pixel text-xl text-white mb-2">
+                🎵 Legendary Music
+              </h3>
+              <p class="text-white text-sm">
+                Composed by Koji Kondo, Mario's soundtrack is recognized
+                worldwide.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Power-up Footer -->
+    <section class="text-center">
+      <div
+        class="inline-flex items-center gap-4 bg-black p-4 rounded-lg border-2 border-white"
+      >
+        <div class="w-6 h-6 bg-red-500 rounded-full animate-pulse"></div>
+        <span class="font-pixel text-white">Thanks for visiting!</span>
+        <div class="w-6 h-6 bg-green-500 rounded-full animate-pulse"></div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .pixel-shadow {
+    text-shadow:
+      4px 4px 0px #000,
+      8px 8px 0px rgba(0, 0, 0, 0.3);
+  }
+</style>
