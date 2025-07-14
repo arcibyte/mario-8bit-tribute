@@ -1,0 +1,806 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Timeline - Mario 8bit Tribute"
+  score={175000}
+  coins={58}
+  world="2-3"
+  lives={4}
+  time={365}
+>
+  <main class="container mx-auto px-4 py-8 max-w-6xl">
+    <!-- Hero Section -->
+    <section class="text-center mb-12">
+      <div class="relative inline-block">
+        <h1
+          class="font-pixel text-6xl md:text-8xl text-mario-yellow mb-4 pixel-shadow"
+        >
+          TIMELINE
+        </h1>
+        <div
+          class="absolute -top-4 -right-4 w-8 h-8 bg-mario-yellow rounded-full animate-bounce"
+        >
+        </div>
+      </div>
+      <p class="font-pixel text-xl text-white mb-8">
+        40+ Years of Mario's Epic Adventures
+      </p>
+      <div class="flex justify-center gap-4 mb-8">
+        <div class="mario-coin animate-spin-slow"></div>
+        <div class="mario-coin animate-spin-slow" style="animation-delay: 0.5s">
+        </div>
+        <div class="mario-coin animate-spin-slow" style="animation-delay: 1s">
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Container -->
+    <div class="relative">
+      <!-- Central Timeline Line -->
+      <div
+        class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-mario-yellow h-full"
+      >
+      </div>
+
+      <!-- Pre-Mario Era -->
+      <div class="timeline-section mb-16">
+        <div class="timeline-header">
+          <h2 class="font-pixel text-4xl text-mario-red mb-4">PRE-MARIO ERA</h2>
+          <p class="text-white">Before the plumber became a legend</p>
+        </div>
+      </div>
+
+      <!-- 1981 -->
+      <div class="timeline-item left">
+        <div class="timeline-content era-80s">
+          <div class="timeline-year">1981</div>
+          <div class="timeline-game">
+            <div class="game-icon">🦍</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              DONKEY KONG
+            </h3>
+            <p class="text-white mb-2">Arcade</p>
+            <p class="text-gray-300 text-sm">
+              Mario's debut as "Jumpman"! The carpenter who started it all in
+              Nintendo's arcade hit.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">First Appearance</span>
+              <span class="stat-badge">Arcade Classic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1982 -->
+      <div class="timeline-item right">
+        <div class="timeline-content era-80s">
+          <div class="timeline-year">1982</div>
+          <div class="timeline-game">
+            <div class="game-icon">🍌</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              DONKEY KONG JR.
+            </h3>
+            <p class="text-white mb-2">Arcade</p>
+            <p class="text-gray-300 text-sm">
+              The only game where Mario is the villain! He captured DK and
+              Junior must save him.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">Mario as Villain</span>
+              <span class="stat-badge">Role Reversal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1983 -->
+      <div class="timeline-item left">
+        <div class="timeline-content era-80s">
+          <div class="timeline-year">1983</div>
+          <div class="timeline-game">
+            <div class="game-icon">🏗️</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              MARIO BROS.
+            </h3>
+            <p class="text-white mb-2">Arcade</p>
+            <p class="text-gray-300 text-sm">
+              The birth of the plumber! Mario and Luigi work together for the
+              first time in the sewers.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">Luigi Debut</span>
+              <span class="stat-badge">Co-op Play</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mario Era Begins -->
+      <div class="timeline-section mb-16">
+        <div class="timeline-header">
+          <h2 class="font-pixel text-4xl text-mario-red mb-4">THE MARIO ERA</h2>
+          <p class="text-white">The legendary platformer series is born</p>
+        </div>
+      </div>
+
+      <!-- 1985 -->
+      <div class="timeline-item right highlight">
+        <div class="timeline-content era-80s">
+          <div class="timeline-year legendary">1985</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">👑</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO BROS.
+            </h3>
+            <p class="text-white mb-2">Nintendo Entertainment System</p>
+            <p class="text-gray-300 text-sm">
+              The game that changed everything! Mario's first adventure in the
+              Mushroom Kingdom.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">Game Changer</span>
+              <span class="stat-badge legendary">NES Launch</span>
+              <span class="stat-badge legendary">World Famous</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1986 -->
+      <div class="timeline-item left">
+        <div class="timeline-content era-80s">
+          <div class="timeline-year">1986</div>
+          <div class="timeline-game">
+            <div class="game-icon">💀</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              SUPER MARIO BROS. 2
+            </h3>
+            <p class="text-white mb-2">Family Computer Disk System (Japan)</p>
+            <p class="text-gray-300 text-sm">
+              "The Lost Levels" - Brutally difficult sequel that tested even
+              expert players.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">Japan Only</span>
+              <span class="stat-badge">Extreme Difficulty</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1988 -->
+      <div class="timeline-item right">
+        <div class="timeline-content era-80s">
+          <div class="timeline-year">1988</div>
+          <div class="timeline-game">
+            <div class="game-icon">🌿</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              SUPER MARIO BROS. 2
+            </h3>
+            <p class="text-white mb-2">NES (International)</p>
+            <p class="text-gray-300 text-sm">
+              The "different" Mario game! Choose between Mario, Luigi, Peach,
+              and Toad in Subcon.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">4 Characters</span>
+              <span class="stat-badge">Unique Gameplay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1988 -->
+      <div class="timeline-item left highlight">
+        <div class="timeline-content era-80s">
+          <div class="timeline-year">1988</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">🦝</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO BROS. 3
+            </h3>
+            <p class="text-white mb-2">Family Computer / NES</p>
+            <p class="text-gray-300 text-sm">
+              The masterpiece! Tanooki Suit, Kuribo's Shoe, and the most
+              creative power-ups ever.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">Masterpiece</span>
+              <span class="stat-badge legendary">Tanooki Suit</span>
+              <span class="stat-badge legendary">8 Worlds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 90s Era -->
+      <div class="timeline-section mb-16">
+        <div class="timeline-header">
+          <h2 class="font-pixel text-4xl text-mario-blue mb-4">
+            THE 90s REVOLUTION
+          </h2>
+          <p class="text-white">16-bit graphics and new dimensions</p>
+        </div>
+      </div>
+
+      <!-- 1990 -->
+      <div class="timeline-item right highlight">
+        <div class="timeline-content era-90s">
+          <div class="timeline-year">1990</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">🦕</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO WORLD
+            </h3>
+            <p class="text-white mb-2">Super Nintendo Entertainment System</p>
+            <p class="text-gray-300 text-sm">
+              Meet Yoshi! The faithful dinosaur companion in the colorful
+              Dinosaur Land.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">Yoshi Debut</span>
+              <span class="stat-badge legendary">SNES Launch</span>
+              <span class="stat-badge legendary">Cape Mario</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1995 -->
+      <div class="timeline-item left">
+        <div class="timeline-content era-90s">
+          <div class="timeline-year">1995</div>
+          <div class="timeline-game">
+            <div class="game-icon">🎭</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              YOSHI'S ISLAND
+            </h3>
+            <p class="text-white mb-2">Super Nintendo</p>
+            <p class="text-gray-300 text-sm">
+              Baby Mario's first adventure! Yoshi protects the crying baby
+              through hand-drawn worlds.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">Baby Mario</span>
+              <span class="stat-badge">Art Style</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1996 -->
+      <div class="timeline-item right highlight">
+        <div class="timeline-content era-90s">
+          <div class="timeline-year">1996</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">🌟</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO 64
+            </h3>
+            <p class="text-white mb-2">Nintendo 64</p>
+            <p class="text-gray-300 text-sm">
+              The 3D revolution! Mario's first 3D adventure with analog controls
+              and camera freedom.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">3D Pioneer</span>
+              <span class="stat-badge legendary">120 Stars</span>
+              <span class="stat-badge legendary">N64 Launch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2000s Era -->
+      <div class="timeline-section mb-16">
+        <div class="timeline-header">
+          <h2 class="font-pixel text-4xl text-mario-green mb-4">
+            NEW MILLENNIUM
+          </h2>
+          <p class="text-white">Innovation and handheld adventures</p>
+        </div>
+      </div>
+
+      <!-- 2002 -->
+      <div class="timeline-item left">
+        <div class="timeline-content era-2000s">
+          <div class="timeline-year">2002</div>
+          <div class="timeline-game">
+            <div class="game-icon">🌊</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              SUPER MARIO SUNSHINE
+            </h3>
+            <p class="text-white mb-2">GameCube</p>
+            <p class="text-gray-300 text-sm">
+              Vacation gone wrong! Mario cleans up Isle Delfino with FLUDD in
+              this tropical adventure.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">FLUDD Device</span>
+              <span class="stat-badge">Tropical Setting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2006 -->
+      <div class="timeline-item right">
+        <div class="timeline-content era-2000s">
+          <div class="timeline-year">2006</div>
+          <div class="timeline-game">
+            <div class="game-icon">🎮</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              NEW SUPER MARIO BROS.
+            </h3>
+            <p class="text-white mb-2">Nintendo DS</p>
+            <p class="text-gray-300 text-sm">
+              Return to 2D! Classic side-scrolling with modern graphics and new
+              power-ups.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">2D Return</span>
+              <span class="stat-badge">Mega Mario</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2007 -->
+      <div class="timeline-item left highlight">
+        <div class="timeline-content era-2000s">
+          <div class="timeline-year">2007</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">🌌</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO GALAXY
+            </h3>
+            <p class="text-white mb-2">Nintendo Wii</p>
+            <p class="text-gray-300 text-sm">
+              Gravity-defying adventure! Mario explores spherical worlds with
+              Rosalina and the Lumas.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">Gravity Gameplay</span>
+              <span class="stat-badge legendary">Rosalina</span>
+              <span class="stat-badge legendary">Motion Controls</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2010s Era -->
+      <div class="timeline-section mb-16">
+        <div class="timeline-header">
+          <h2 class="font-pixel text-4xl text-mario-purple mb-4">THE 2010s</h2>
+          <p class="text-white">HD graphics and creative gameplay</p>
+        </div>
+      </div>
+
+      <!-- 2010 -->
+      <div class="timeline-item right">
+        <div class="timeline-content era-2010s">
+          <div class="timeline-year">2010</div>
+          <div class="timeline-game">
+            <div class="game-icon">🌠</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              SUPER MARIO GALAXY 2
+            </h3>
+            <p class="text-white mb-2">Nintendo Wii</p>
+            <p class="text-gray-300 text-sm">
+              More cosmic adventures! Yoshi returns in space with new power-ups
+              and 120 new stars.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">Yoshi in Space</span>
+              <span class="stat-badge">242 Stars</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2011 -->
+      <div class="timeline-item left">
+        <div class="timeline-content era-2010s">
+          <div class="timeline-year">2011</div>
+          <div class="timeline-game">
+            <div class="game-icon">🎪</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              SUPER MARIO 3D LAND
+            </h3>
+            <p class="text-white mb-2">Nintendo 3DS</p>
+            <p class="text-gray-300 text-sm">
+              Stereoscopic 3D without glasses! Tanooki Mario returns in portable
+              3D adventure.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">3D Depth</span>
+              <span class="stat-badge">Tanooki Return</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2012 -->
+      <div class="timeline-item right">
+        <div class="timeline-content era-2010s">
+          <div class="timeline-year">2012</div>
+          <div class="timeline-game">
+            <div class="game-icon">🎯</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              NEW SUPER MARIO BROS. U
+            </h3>
+            <p class="text-white mb-2">Wii U</p>
+            <p class="text-gray-300 text-sm">
+              HD 2D platforming! Flying Squirrel Mario and asymmetric GamePad
+              gameplay.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">HD Graphics</span>
+              <span class="stat-badge">Flying Squirrel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2013 -->
+      <div class="timeline-item left highlight">
+        <div class="timeline-content era-2010s">
+          <div class="timeline-year">2013</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">🐱</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO 3D WORLD
+            </h3>
+            <p class="text-white mb-2">Wii U</p>
+            <p class="text-gray-300 text-sm">
+              Cat Mario! 4-player co-op with the most adorable power-up ever
+              created.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">Cat Suit</span>
+              <span class="stat-badge legendary">4-Player Co-op</span>
+              <span class="stat-badge legendary">Captain Toad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2017 -->
+      <div class="timeline-item right highlight">
+        <div class="timeline-content era-2010s">
+          <div class="timeline-year">2017</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">🎩</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO ODYSSEY
+            </h3>
+            <p class="text-white mb-2">Nintendo Switch</p>
+            <p class="text-gray-300 text-sm">
+              Cappy's magical adventure! Possess enemies and objects in this
+              globe-trotting odyssey.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">Cappy Mechanic</span>
+              <span class="stat-badge legendary">999 Power Moons</span>
+              <span class="stat-badge legendary">Switch Launch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2020s Era -->
+      <div class="timeline-section mb-16">
+        <div class="timeline-header">
+          <h2 class="font-pixel text-4xl text-mario-orange mb-4">THE 2020s</h2>
+          <p class="text-white">New innovations and celebrations</p>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="timeline-item left highlight">
+        <div class="timeline-content era-2020s">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-game">
+            <div class="game-icon legendary">🌸</div>
+            <h3 class="font-pixel text-3xl text-mario-yellow mb-2">
+              SUPER MARIO BROS. WONDER
+            </h3>
+            <p class="text-white mb-2">Nintendo Switch</p>
+            <p class="text-gray-300 text-sm">
+              Wonder effects transform everything! The most creative 2D Mario in
+              decades.
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge legendary">Wonder Effects</span>
+              <span class="stat-badge legendary">Elephant Mario</span>
+              <span class="stat-badge legendary">Latest Game</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Future -->
+      <div class="timeline-item right">
+        <div class="timeline-content era-future">
+          <div class="timeline-year">????</div>
+          <div class="timeline-game">
+            <div class="game-icon">❓</div>
+            <h3 class="font-pixel text-2xl text-mario-yellow mb-2">
+              NEXT ADVENTURE
+            </h3>
+            <p class="text-white mb-2">Nintendo Switch & Beyond</p>
+            <p class="text-gray-300 text-sm">
+              What's next for Mario? New worlds, new power-ups, and endless
+              possibilities await!
+            </p>
+            <div class="game-stats">
+              <span class="stat-badge">Mystery</span>
+              <span class="stat-badge">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Footer -->
+    <section class="mt-16 text-center">
+      <div class="bg-black p-8 rounded-lg border-4 border-mario-yellow">
+        <h3 class="font-pixel text-3xl text-mario-yellow mb-6">
+          MARIO BY THE NUMBERS
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="stat-box">
+            <div class="text-4xl font-pixel text-mario-red">40+</div>
+            <div class="text-white">Years of Adventures</div>
+          </div>
+          <div class="stat-box">
+            <div class="text-4xl font-pixel text-mario-blue">20+</div>
+            <div class="text-white">Main Games</div>
+          </div>
+          <div class="stat-box">
+            <div class="text-4xl font-pixel text-mario-green">800M+</div>
+            <div class="text-white">Games Sold</div>
+          </div>
+          <div class="stat-box">
+            <div class="text-4xl font-pixel text-mario-yellow">∞</div>
+            <div class="text-white">Memories Made</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .pixel-shadow {
+    text-shadow:
+      4px 4px 0px #000,
+      8px 8px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .mario-coin {
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle, #ffd700 30%, #ffa500 70%);
+    border: 2px solid #000;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .timeline-section {
+    text-align: center;
+    margin: 4rem 0;
+  }
+
+  .timeline-header {
+    background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 3px solid #ffd700;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin: 2rem 0;
+    width: 45%;
+  }
+
+  .timeline-item.left {
+    left: 0;
+  }
+
+  .timeline-item.right {
+    left: 55%;
+  }
+
+  .timeline-item.highlight {
+    transform: scale(1.05);
+  }
+
+  .timeline-content {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 3px solid;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .era-80s {
+    border-color: #ff6b6b;
+  }
+  .era-90s {
+    border-color: #4ecdc4;
+  }
+  .era-2000s {
+    border-color: #45b7d1;
+  }
+  .era-2010s {
+    border-color: #f9ca24;
+  }
+  .era-2020s {
+    border-color: #6c5ce7;
+  }
+  .era-future {
+    border-color: #a29bfe;
+  }
+
+  .timeline-year {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0 #000;
+  }
+
+  .timeline-year.legendary {
+    color: #ff6b6b;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow:
+        2px 2px 0 #000,
+        0 0 10px #ff6b6b;
+    }
+    to {
+      text-shadow:
+        2px 2px 0 #000,
+        0 0 20px #ff6b6b,
+        0 0 30px #ff6b6b;
+    }
+  }
+
+  .game-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(2px 2px 0 #000);
+  }
+
+  .game-icon.legendary {
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .game-stats {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stat-badge {
+    background: #333;
+    color: #ffd700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 1px solid #666;
+  }
+
+  .stat-badge.legendary {
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    color: white;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .stat-box {
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid #333;
+  }
+
+  /* Timeline connector dots */
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ffd700;
+    border: 3px solid #000;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .timeline-item.left::before {
+    right: -55px;
+  }
+
+  .timeline-item.right::before {
+    left: -55px;
+  }
+
+  .timeline-item.highlight::before {
+    background: #ff6b6b;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .timeline-item {
+      width: 100%;
+      left: 0 !important;
+      margin-left: 2rem;
+    }
+
+    .timeline-item::before {
+      left: -35px !important;
+    }
+
+    .timeline-year {
+      font-size: 2rem;
+    }
+
+    .game-icon {
+      font-size: 3rem;
+    }
+  }
+</style>
