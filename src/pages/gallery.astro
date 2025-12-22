@@ -1,72 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { galleryItems, getTypeStyle, getGalleryStats, getDifficultyColor } from '../data/galleryData';
 
-// Gallery data
-const galleryItems = [
-  {
-    id: 1,
-    title: "World 1-1",
-    description: "The iconic first level",
-    image: "/api/placeholder/400/300",
-    world: "1-1",
-    type: "level"
-  },
-  {
-    id: 2,
-    title: "Castle",
-    description: "Bowser's fortress",
-    image: "/api/placeholder/400/300",
-    world: "1-4",
-    type: "castle"
-  },
-  {
-    id: 3,
-    title: "Underground",
-    description: "Secret underground world",
-    image: "/api/placeholder/400/300",
-    world: "1-2",
-    type: "underground"
-  },
-  {
-    id: 4,
-    title: "Sky World",
-    description: "High above the clouds",
-    image: "/api/placeholder/400/300",
-    world: "2-1",
-    type: "sky"
-  },
-  {
-    id: 5,
-    title: "Water World",
-    description: "Swimming with the fishes",
-    image: "/api/placeholder/400/300",
-    world: "2-2",
-    type: "water"
-  },
-  {
-    id: 6,
-    title: "Ice World",
-    description: "Slippery frozen adventure",
-    image: "/api/placeholder/400/300",
-    world: "3-1",
-    type: "ice"
-  }
-];
-
-
-function getTypeStyle(type) {
-  const styles = {
-    'level': 'bg-mario-green text-white',
-    'castle': 'bg-mario-red text-white',
-    'underground': 'bg-mario-brown text-white',
-    'sky': 'bg-mario-blue text-white',
-    'water': 'bg-blue-600 text-white',
-    'ice': 'bg-blue-300 text-blue-900'
-  };
-  return styles[type] || 'bg-gray-600 text-white';
-}
-
+const stats = getGalleryStats();
 const selectedItem = galleryItems[0];
+
+const itemsPerPage = 12;
+const displayedItems = galleryItems.slice(0, itemsPerPage);
 ---
 
 <Layout 
@@ -92,7 +32,7 @@ const selectedItem = galleryItems[0];
 
       <!-- Gallery grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-        {galleryItems.map((item) => (
+        {displayedItems.map((item) => (
           <div class="gallery-item group cursor-pointer">
             <!-- Game Boy style frame -->
             <div class="bg-gray-800 p-4 rounded-lg border-4 border-gray-600 hover:border-mario-yellow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
@@ -106,13 +46,32 @@ const selectedItem = galleryItems[0];
                 />
                 
                 <!-- Overlay with information -->
-                <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
                   <div class="text-center">
-                    <div class="text-mario-yellow font-pixel text-sm pixel-text mb-1">
+                    <div class="text-mario-yellow font-pixel text-sm pixel-text mb-2">
                       WORLD {item.world}
                     </div>
-                    <div class="text-white font-pixel text-xs pixel-text">
+                    {item.difficulty && (
+                      <div class={`font-pixel text-xs pixel-text mb-2 ${getDifficultyColor(item.difficulty)}`}>
+                        {item.difficulty.toUpperCase()}
+                      </div>
+                    )}
+                    <div class="text-white font-pixel text-xs pixel-text mb-3">
                       CLICK TO EXPLORE
+                    </div>
+                    
+                    <!-- Quick stats -->
+                    <div class="flex justify-center gap-3 text-xs font-pixel">
+                      {item.coinsAvailable && (
+                        <div class="text-mario-yellow">
+                          🪙 {item.coinsAvailable}
+                        </div>
+                      )}
+                      {item.secrets && (
+                        <div class="text-green-400">
+                          ⭐ {item.secrets}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -140,7 +99,7 @@ const selectedItem = galleryItems[0];
       </div>
 
       <!-- Featured section -->
-      <div class="bg-black bg-opacity-80 rounded-lg p-6 border-4 border-mario-red">
+      <div class="bg-black bg-opacity-80 rounded-lg p-6 border-4 border-mario-red mb-8">
         <h2 class="font-pixel text-2xl text-mario-yellow pixel-text mb-4 text-center">
           🏆 FEATURED WORLD
         </h2>
@@ -158,12 +117,44 @@ const selectedItem = galleryItems[0];
             <h3 class="font-pixel text-3xl text-white pixel-text mb-2">
               {selectedItem.title}
             </h3>
-            <div class="text-mario-yellow font-pixel text-lg pixel-text mb-4">
+            <div class="text-mario-yellow font-pixel text-lg pixel-text mb-2">
               WORLD {selectedItem.world}
             </div>
-            <p class="text-gray-300 font-pixel text-sm pixel-text mb-6">
+            
+            {selectedItem.difficulty && (
+              <div class={`font-pixel text-sm pixel-text mb-4 ${getDifficultyColor(selectedItem.difficulty)}`}>
+                DIFFICULTY: {selectedItem.difficulty.toUpperCase()}
+              </div>
+            )}
+            
+            <p class="text-gray-300 font-pixel text-sm pixel-text mb-4">
               {selectedItem.description}
             </p>
+            
+            <!-- Level details -->
+            <div class="mb-6 space-y-2">
+              {selectedItem.enemies && selectedItem.enemies.length > 0 && (
+                <div class="text-xs font-pixel text-gray-400">
+                  <span class="text-red-400">ENEMIES:</span> {selectedItem.enemies.join(', ')}
+                </div>
+              )}
+              {selectedItem.powerUps && selectedItem.powerUps.length > 0 && (
+                <div class="text-xs font-pixel text-gray-400">
+                  <span class="text-green-400">POWER-UPS:</span> {selectedItem.powerUps.join(', ')}
+                </div>
+              )}
+              <div class="flex gap-4 text-xs font-pixel text-gray-400">
+                {selectedItem.coinsAvailable && (
+                  <span>🪙 {selectedItem.coinsAvailable} COINS</span>
+                )}
+                {selectedItem.secrets && (
+                  <span>⭐ {selectedItem.secrets} SECRETS</span>
+                )}
+                {selectedItem.timeLimit && (
+                  <span>⏱️ {selectedItem.timeLimit}s</span>
+                )}
+              </div>
+            </div>
             
             <!-- Action buttons -->
             <div class="flex flex-wrap gap-3 justify-center md:justify-start">
@@ -195,7 +186,7 @@ const selectedItem = galleryItems[0];
         <!-- Statistics -->
         <div class="inline-block bg-black bg-opacity-60 rounded-lg p-4 border-2 border-mario-yellow">
           <div class="text-mario-yellow font-pixel text-sm pixel-text">
-            GALLERY STATS: {galleryItems.length} WORLDS • 6 LEVELS • ∞ ADVENTURES
+            GALLERY STATS: {stats.totalWorlds} WORLDS • {stats.totalCastles} CASTLES • {stats.totalCoins} COINS • {stats.totalSecrets} SECRETS
           </div>
         </div>
       </div>
@@ -223,6 +214,10 @@ const selectedItem = galleryItems[0];
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     border-color: rgba(255,255,255,0.3);
+  }
+  
+  .mario-button:active {
+    transform: translateY(0px);
   }
   
   .pixel-art {
