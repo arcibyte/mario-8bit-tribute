@@ -1,0 +1,114 @@
+---
+const { item, getDifficultyColor } = Astro.props;
+---
+
+<div
+  class="bg-black bg-opacity-80 rounded-lg p-6 border-4 border-mario-red mb-8"
+>
+  <h2 class="font-pixel text-2xl text-mario-yellow pixel-text mb-4 text-center">
+    🏆 FEATURED WORLD
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-6 items-center">
+    <div>
+      <img
+        src={item.image}
+        alt={item.title}
+        class="w-full h-64 object-cover pixel-art rounded border-4 border-mario-yellow"
+      />
+    </div>
+
+    <div class="text-center md:text-left">
+      <h3 class="font-pixel text-3xl text-white pixel-text mb-2">
+        {item.title}
+      </h3>
+      <div class="text-mario-yellow font-pixel text-lg pixel-text mb-2">
+        WORLD {item.world}
+      </div>
+
+      {
+        item.difficulty && (
+          <div
+            class={`font-pixel text-sm pixel-text mb-4 ${getDifficultyColor(item.difficulty)}`}
+          >
+            DIFFICULTY: {item.difficulty.toUpperCase()}
+          </div>
+        )
+      }
+
+      <p class="text-gray-300 font-pixel text-sm pixel-text mb-4">
+        {item.description}
+      </p>
+
+      <div class="mb-6 space-y-2">
+        {
+          item.enemies && item.enemies.length > 0 && (
+            <div class="text-xs font-pixel text-gray-400">
+              <span class="text-red-400">ENEMIES:</span>{" "}
+              {item.enemies.join(", ")}
+            </div>
+          )
+        }
+        {
+          item.powerUps && item.powerUps.length > 0 && (
+            <div class="text-xs font-pixel text-gray-400">
+              <span class="text-green-400">POWER-UPS:</span>{" "}
+              {item.powerUps.join(", ")}
+            </div>
+          )
+        }
+        <div class="flex gap-4 text-xs font-pixel text-gray-400">
+          {item.coinsAvailable && <span>🪙 {item.coinsAvailable} COINS</span>}
+          {item.secrets && <span>⭐ {item.secrets} SECRETS</span>}
+          {item.timeLimit && <span>⏱️ {item.timeLimit}s</span>}
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+        <button
+          class="mario-button bg-mario-green hover:bg-green-600 text-white font-pixel px-4 py-2 pixel-text"
+        >
+          🎮 PLAY NOW
+        </button>
+        <button
+          class="mario-button bg-mario-blue hover:bg-blue-600 text-white font-pixel px-4 py-2 pixel-text"
+        >
+          📖 READ MORE
+        </button>
+        <button
+          class="mario-button bg-mario-yellow hover:bg-yellow-600 text-black font-pixel px-4 py-2 pixel-text"
+        >
+          ⭐ FAVORITE
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mario-button {
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  }
+
+  .mario-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .mario-button:active {
+    transform: translateY(0px);
+  }
+
+  .pixel-art {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  .pixel-text {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  }
+</style>
