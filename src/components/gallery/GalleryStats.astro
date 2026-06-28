@@ -1,0 +1,50 @@
+---
+const { stats } = Astro.props;
+---
+
+<div class="text-center mt-8 space-y-4">
+  <div class="flex justify-center space-x-4">
+    <button
+      class="mario-button bg-mario-red hover:bg-red-600 text-white font-pixel px-6 py-3 pixel-text"
+    >
+      ← PREVIOUS
+    </button>
+    <button
+      class="mario-button bg-mario-green hover:bg-green-600 text-white font-pixel px-6 py-3 pixel-text"
+    >
+      NEXT →
+    </button>
+  </div>
+
+  <div
+    class="inline-block bg-black bg-opacity-60 rounded-lg p-4 border-2 border-mario-yellow"
+  >
+    <div class="text-mario-yellow font-pixel text-sm pixel-text">
+      GALLERY STATS: {stats.totalWorlds} WORLDS • {stats.totalCastles} CASTLES • {
+        stats.totalCoins
+      } COINS • {stats.totalSecrets} SECRETS
+    </div>
+  </div>
+</div>
+
+<style>
+  .mario-button {
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  }
+
+  .mario-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .mario-button:active {
+    transform: translateY(0px);
+  }
+
+  .pixel-text {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  }
+</style>
