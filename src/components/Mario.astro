@@ -32,10 +32,19 @@ const variantColors = {
   class={`mario-sprite ${sizeClasses[size]} ${className} ${isJumping ? "mario-jump" : ""} ${isWalking ? "mario-walk" : ""}`}
 >
   <div
-    class={`mario-hat ${variantColors[variant]} w-full h-3 rounded-t-full relative`}
+    class={`mario-hat ${variantColors[variant]} w-full h-[22%] rounded-t-full relative z-20`}
   >
     <div
-      class="mario-hat-shine bg-white w-2 h-1 rounded-full absolute top-0 left-2"
+      class={`mario-brim ${variantColors[variant]} absolute -bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-2 rounded-b-full border-t border-black/10`}
+    >
+    </div>
+    <div
+      class="mario-logo absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-3 h-3 rounded-full flex items-center justify-center"
+    >
+      <span class="text-[6px] font-black text-red-600 leading-none">M</span>
+    </div>
+    <div
+      class="mario-hat-shine bg-white/70 w-1.5 h-1 rounded-full absolute top-0.5 left-1.5"
     >
     </div>
   </div>
