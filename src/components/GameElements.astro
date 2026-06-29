@@ -1,19 +1,17 @@
 ---
 interface Props {
-  element?: 'coin' | 'block' | 'mushroom' | 'flower' | 'star' | 'flag';
+  element?: 'block' | 'mushroom' | 'flower' | 'star' | 'flag';
   size?: 'small' | 'medium' | 'large';
-  isAnimated?: boolean;
   isCollected?: boolean;
   className?: string;
   position?: 'ground' | 'floating' | 'high' | 'underground';
-  x?: number; // Posición horizontal en el mundo
-  y?: number; // Posición vertical personalizada
+  x?: number; // horizontal offset in the world
+  y?: number; // custom vertical offset
 }
 
 const { 
-  element = 'coin',
+  element = 'block',
   size = 'medium',
-  isAnimated = true,
   isCollected = false,
   className = '',
   position = 'ground',
@@ -34,80 +32,63 @@ const positionClasses = {
   underground: 'mario-underground-level'
 };
 
-const customStyle = {
-  transform: x !== 0 || y !== 0 ? `translate(${x}px, ${y}px)` : undefined
-};
+const customStyle = (x !== 0 || y !== 0) ? { transform: `translate(${x}px, ${y}px)` } : {};
 ---
 
 <div 
-  class={`game-element ${sizeClasses[size]} ${positionClasses[position]} ${className} ${isAnimated ? 'element-animated' : ''} ${isCollected ? 'element-collected' : ''}`}
+  class={`game-element ${sizeClasses[size]} ${positionClasses[position]} ${className} ${isCollected ? 'element-collected' : ''}`}
   style={customStyle}
 >
   
-  {element === 'coin' && (
-    <div class="mario-coin bg-yellow-500 w-full h-full rounded-full border-2 border-yellow-700 relative flex items-center justify-center">
-      <div class="coin-symbol text-yellow-900 font-bold text-sm">$</div>
-      <div class="coin-shine bg-white w-2 h-2 rounded-full absolute top-0 left-1 opacity-70"></div>
-    </div>
-  )}
-  
   {element === 'block' && (
-    <div class="mario-block bg-orange-600 w-full h-full border-2 border-orange-800 relative">
-      <div class="block-pattern">
-        <div class="block-line bg-orange-800 w-full h-px absolute top-1/3"></div>
-        <div class="block-line bg-orange-800 w-full h-px absolute bottom-1/3"></div>
-        <div class="block-line bg-orange-800 w-px h-full absolute left-1/4"></div>
-        <div class="block-line bg-orange-800 w-px h-full absolute right-1/4"></div>
-      </div>
+    <div class="mario-block bg-amber-600 w-full h-full border-2 border-black relative flex items-center justify-center">
+      <span class="block-mark text-amber-100 font-black text-base leading-none">?</span>
+      <div class="block-corner bg-amber-800 w-1 h-1 absolute top-0.5 left-0.5"></div>
+      <div class="block-corner bg-amber-800 w-1 h-1 absolute top-0.5 right-0.5"></div>
+      <div class="block-corner bg-amber-800 w-1 h-1 absolute bottom-0.5 left-0.5"></div>
+      <div class="block-corner bg-amber-800 w-1 h-1 absolute bottom-0.5 right-0.5"></div>
     </div>
   )}
   
   {element === 'mushroom' && (
-    <div class="mario-mushroom w-full h-full relative">
-      <!-- Cabeza del hongo -->
-      <div class="mushroom-head bg-red-500 w-full h-3/4 rounded-t-full border-2 border-red-700 relative">
-        <div class="mushroom-spots flex justify-center space-x-1 pt-1">
-          <div class="mushroom-spot bg-white w-1 h-1 rounded-full"></div>
-          <div class="mushroom-spot bg-white w-1 h-1 rounded-full"></div>
+    <div class="mario-mushroom w-full h-full relative flex flex-col items-center">
+      <!-- Mushroom cap -->
+      <div class="mushroom-head bg-red-600 w-full h-3/5 rounded-t-full border-2 border-black relative">
+        <div class="mushroom-spots flex justify-center gap-1.5 pt-1">
+          <div class="mushroom-spot bg-white w-1.5 h-1.5 rounded-full border border-black"></div>
+          <div class="mushroom-spot bg-white w-1.5 h-1.5 rounded-full border border-black"></div>
         </div>
       </div>
-      <!-- Tallo del hongo -->
-      <div class="mushroom-stem bg-orange-200 w-2/3 h-1/4 mx-auto border border-orange-400"></div>
+      <!-- Mushroom stem -->
+      <div class="mushroom-stem bg-orange-100 w-3/5 h-2/5 border-2 border-t-0 border-black"></div>
     </div>
   )}
   
   {element === 'flower' && (
-    <div class="mario-flower w-full h-full relative">
-      <!-- Flor de fuego -->
-      <div class="flower-petals bg-orange-500 w-full h-3/4 rounded-full border-2 border-red-600 relative">
-        <div class="flower-center bg-yellow-400 w-2 h-2 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="flower-flames">
-          <div class="flame bg-red-500 w-1 h-2 absolute -top-1 left-1"></div>
-          <div class="flame bg-red-500 w-1 h-2 absolute -top-1 right-1"></div>
-        </div>
+    <div class="mario-flower w-full h-full relative flex flex-col items-center justify-end">
+      <!-- Fire flower -->
+      <div class="flower-petals bg-white w-full h-3/5 rounded-full border-2 border-black relative flex items-center justify-center">
+        <div class="flower-center bg-red-600 w-2/5 h-2/5 rounded-full border border-black"></div>
+        <div class="flame bg-orange-500 w-2 h-2.5 absolute -top-1.5 left-0.5 rounded-t-full border border-black"></div>
+        <div class="flame bg-orange-500 w-2 h-2.5 absolute -top-1.5 right-0.5 rounded-t-full border border-black"></div>
       </div>
-      <!-- Tallo -->
-      <div class="flower-stem bg-green-500 w-1 h-1/4 mx-auto border border-green-700"></div>
+      <!-- Stem -->
+      <div class="flower-stem bg-green-600 w-1.5 h-1/4 border border-black"></div>
     </div>
   )}
   
   {element === 'star' && (
-    <div class="mario-star w-full h-full relative">
-      <div class="star-body bg-yellow-400 w-full h-full relative flex items-center justify-center border-2 border-yellow-600">
-        <div class="star-shape text-yellow-900 font-bold text-lg">★</div>
-        <div class="star-shine bg-white w-1 h-1 rounded-full absolute top-1 left-1 opacity-80"></div>
-      </div>
+    <div class="mario-star w-full h-full relative flex items-center justify-center">
+      <span class="star-shape text-yellow-400 text-2xl leading-none" style="-webkit-text-stroke: 1.5px black;">★</span>
     </div>
   )}
   
   {element === 'flag' && (
     <div class="mario-flag w-full h-full relative">
-      <!-- Asta -->
-      <div class="flag-pole bg-gray-600 w-1 h-full absolute left-0 border border-gray-800"></div>
-      <!-- Bandera -->
-      <div class="flag-banner bg-red-500 w-3/4 h-1/2 absolute top-0 left-1 border border-red-700">
-        <div class="flag-pattern bg-white w-1 h-1 absolute top-1 left-1"></div>
-      </div>
+      <!-- Pole -->
+      <div class="flag-pole bg-gray-300 w-1 h-full absolute left-0 border border-black"></div>
+      <!-- Banner -->
+      <div class="flag-banner bg-green-600 w-3/4 h-1/2 absolute top-0 left-1 border border-black"></div>
     </div>
   )}
   
@@ -122,7 +103,6 @@ const customStyle = {
     display: inline-block;
     z-index: 10;
   }
-
 
   .mario-ground-level {
     bottom: 300px; 
@@ -140,131 +120,12 @@ const customStyle = {
     bottom: 90px; 
   }
 
-  
-  .mario-world-container {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    background: linear-gradient(
-      180deg,
-      #87ceeb 0%,
-      #87ceeb 60%,
-      #228b22 60%,
-      #228b22 100%
-    );
-  }
-
-  .mario-world-stage {
-    position: relative;
-    width: 3000px;
-    height: 100%;
-    background-image: 
-
-      radial-gradient(ellipse 60px 30px at 200px 80px, white 40%, transparent 50%),
-      radial-gradient(ellipse 80px 40px at 500px 60px, white 40%, transparent 50%),
-      radial-gradient(ellipse 70px 35px at 800px 90px, white 40%, transparent 50%),
-      radial-gradient(ellipse 60px 30px at 1200px 70px, white 40%, transparent 50%),
-      /* Colinas */
-      radial-gradient(ellipse 150px 80px at 300px 100%, #32cd32 40%, transparent 50%),
-      radial-gradient(ellipse 200px 100px at 700px 100%, #32cd32 40%, transparent 50%),
-      radial-gradient(ellipse 180px 90px at 1100px 100%, #32cd32 40%, transparent 50%);
-    background-repeat: no-repeat;
-  }
-  
-  .element-animated .mario-coin {
-    animation: coin-spin 2s linear infinite;
-  }
-  
-  .element-animated .mario-block {
-    animation: block-pulse 2s ease-in-out infinite;
-  }
-  
-  .element-animated .mario-mushroom {
-    animation: mushroom-bounce 1s ease-in-out infinite;
-  }
-  
-  .element-animated .mario-flower {
-    animation: flower-glow 1.5s ease-in-out infinite;
-  }
-  
-  .element-animated .mario-star {
-    animation: star-twinkle 1s ease-in-out infinite;
-  }
-  
-  .element-animated .mario-flag {
-    animation: flag-wave 2s ease-in-out infinite;
-  }
-  
   .element-collected {
-    animation: element-collect 0.5s ease-out forwards;
-  }
-  
-  @keyframes coin-spin {
-    0% { transform: rotateY(0deg); }
-    50% { transform: rotateY(180deg) scaleX(0.3); }
-    100% { transform: rotateY(360deg); }
-  }
-  
-  @keyframes block-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-  
-  @keyframes mushroom-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-2px); }
-  }
-  
-  @keyframes flower-glow {
-    0%, 100% { box-shadow: 0 0 0 rgba(255, 69, 0, 0.5); }
-    50% { box-shadow: 0 0 8px rgba(255, 69, 0, 0.8); }
-  }
-  
-  @keyframes star-twinkle {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.1); }
-  }
-  
-  @keyframes flag-wave {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(2deg); }
-    75% { transform: rotate(-2deg); }
-  }
-  
-  @keyframes element-collect {
-    0% { 
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    50% { 
-      transform: translateY(-15px) scale(1.2);
-      opacity: 0.8;
-    }
-    100% { 
-      transform: translateY(-30px) scale(0);
-      opacity: 0;
-    }
+    opacity: 0;
+    visibility: hidden;
   }
 
-  /* Hover effects */
-  .game-element:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-    cursor: pointer;
-  }
-
-  /* Responsive design */
   @media (max-width: 768px) {
-    .mario-world-container {
-      height: 300px;
-    }
-    
-    .mario-world-stage {
-      width: 2000px;
-    }
-    
     .mario-ground-level {
       bottom: 80px;
     }
@@ -275,6 +136,10 @@ const customStyle = {
     
     .mario-high-level {
       bottom: 200px;
+    }
+
+    .mario-underground-level {
+      bottom: 60px;
     }
   }
 </style>
