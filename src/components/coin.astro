@@ -1,0 +1,102 @@
+---
+interface Props {
+  size?: "small" | "medium" | "large";
+  isCollected?: boolean;
+  className?: string;
+  position?: "ground" | "floating" | "high" | "underground";
+  x?: number; // horizontal offset in the world
+  y?: number; // custom vertical offset
+}
+
+const {
+  size = "medium",
+  isCollected = false,
+  className = "",
+  position = "ground",
+  x = 0,
+  y = 0,
+} = Astro.props;
+
+const sizeClasses = {
+  small: "w-6 h-6",
+  medium: "w-8 h-8",
+  large: "w-12 h-12",
+};
+
+const positionClasses = {
+  ground: "mario-ground-level",
+  floating: "mario-floating-level",
+  high: "mario-high-level",
+  underground: "mario-underground-level",
+};
+
+const customStyle =
+  x !== 0 || y !== 0 ? { transform: `translate(${x}px, ${y}px)` } : {};
+---
+
+<div
+  class={`game-element ${sizeClasses[size]} ${positionClasses[position]} ${className} ${isCollected ? "element-collected" : ""}`}
+  style={customStyle}
+>
+  <div
+    class="mario-coin bg-yellow-400 w-full h-full rounded-full border-2 border-black relative flex items-center justify-center"
+  >
+    <div
+      class="coin-inner bg-yellow-500 w-2/3 h-2/3 rounded-full flex items-center justify-center"
+    >
+      <span class="coin-symbol text-yellow-900 font-black text-xs leading-none"
+        >¢</span
+      >
+    </div>
+  </div>
+</div>
+
+<style>
+  .game-element {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    position: absolute;
+    display: inline-block;
+    z-index: 10;
+  }
+
+  .mario-ground-level {
+    bottom: 300px;
+  }
+
+  .mario-floating-level {
+    bottom: 350px;
+  }
+
+  .mario-high-level {
+    bottom: 390px;
+  }
+
+  .mario-underground-level {
+    bottom: 90px;
+  }
+
+  .element-collected {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .mario-ground-level {
+      bottom: 80px;
+    }
+
+    .mario-floating-level {
+      bottom: 140px;
+    }
+
+    .mario-high-level {
+      bottom: 200px;
+    }
+
+    .mario-underground-level {
+      bottom: 60px;
+    }
+  }
+</style>
