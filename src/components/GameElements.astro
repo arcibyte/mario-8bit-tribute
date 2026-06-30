@@ -1,6 +1,6 @@
 ---
 interface Props {
-  element?: 'block' | 'mushroom' | 'flower' | 'star' | 'flag';
+  element?: 'coin' | 'block' | 'mushroom' | 'flower' | 'star' | 'flag';
   size?: 'small' | 'medium' | 'large';
   isCollected?: boolean;
   className?: string;
@@ -39,6 +39,14 @@ const customStyle = (x !== 0 || y !== 0) ? { transform: `translate(${x}px, ${y}p
   class={`game-element ${sizeClasses[size]} ${positionClasses[position]} ${className} ${isCollected ? 'element-collected' : ''}`}
   style={customStyle}
 >
+
+  {element === 'coin' && (
+    <div class="mario-coin bg-yellow-400 w-full h-full rounded-full border-2 border-black relative flex items-center justify-center">
+      <div class="coin-inner bg-yellow-500 w-2/3 h-2/3 rounded-full flex items-center justify-center">
+        <span class="coin-symbol text-yellow-900 font-black text-xs leading-none">¢</span>
+      </div>
+    </div>
+  )}
   
   {element === 'block' && (
     <div class="mario-block bg-amber-600 w-full h-full border-2 border-black relative flex items-center justify-center">
@@ -105,11 +113,11 @@ const customStyle = (x !== 0 || y !== 0) ? { transform: `translate(${x}px, ${y}p
   }
 
   .mario-ground-level {
-    bottom: 300px; 
+    bottom: 250px; 
   }
 
   .mario-floating-level {
-    bottom: 350px;
+    bottom: 310px;
   }
 
   .mario-high-level {
@@ -127,19 +135,19 @@ const customStyle = (x !== 0 || y !== 0) ? { transform: `translate(${x}px, ${y}p
 
   @media (max-width: 768px) {
     .mario-ground-level {
-      bottom: 80px;
+      bottom: 110px;
     }
     
     .mario-floating-level {
-      bottom: 140px;
+      bottom: 170px;
     }
     
     .mario-high-level {
-      bottom: 200px;
+      bottom: 230px;
     }
 
     .mario-underground-level {
-      bottom: 60px;
+      bottom: 40px;
     }
   }
 </style>
