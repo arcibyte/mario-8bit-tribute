@@ -15,20 +15,33 @@ const {
   className = "",
 } = Astro.props;
 
+// Proporciones ajustadas para mantener el aspecto de bloque (4:5 aprox)
 const sizeClasses = {
   small: "w-8 h-10",
   medium: "w-16 h-20",
   large: "w-24 h-32",
 };
 
+// Paleta hexadecimal exacta de Super Mario Bros (NES)
 const variantColors = {
-  classic: { top: "bg-red-600", overalls: "bg-blue-700", accent: "bg-red-600" },
-  super: {
-    top: "bg-red-700",
-    overalls: "bg-blue-800",
-    accent: "bg-yellow-400",
+  classic: {
+    top: "bg-[#d82800]",
+    overalls: "bg-[#0058f8]",
+    accent: "bg-[#f8b800]",
+    skin: "bg-[#f8d8b0]",
   },
-  fire: { top: "bg-white", overalls: "bg-red-600", accent: "bg-white" },
+  super: {
+    top: "bg-[#d82800]",
+    overalls: "bg-[#0058f8]",
+    accent: "bg-[#f8b800]",
+    skin: "bg-[#f8d8b0]",
+  },
+  fire: {
+    top: "bg-[#ffffff]",
+    overalls: "bg-[#d82800]",
+    accent: "bg-[#0058f8]",
+    skin: "bg-[#f8d8b0]",
+  },
 };
 
 const colors = variantColors[variant];
@@ -37,116 +50,83 @@ const colors = variantColors[variant];
 <div
   class={`mario-sprite relative ${sizeClasses[size]} ${className} ${isJumping ? "mario-jump" : ""} ${isWalking ? "mario-walk" : ""}`}
 >
-  <div
-    class={`mario-hat ${colors.top} w-full h-[22%] rounded-t-full relative z-20`}
-  >
-    <div
-      class={`mario-brim ${colors.top} absolute -bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-2 rounded-b-full border-t border-black/10`}
-    >
+  <div class="mario-hat w-full h-[25%] relative z-20">
+    <div class={`${colors.top} w-[60%] h-[70%] absolute bottom-0 left-[20%]`}>
     </div>
-    <!-- M logo -->
-    <div
-      class="mario-logo absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-3 h-3 rounded-full flex items-center justify-center"
-    >
-      <span class="text-[6px] font-black text-red-600 leading-none">M</span>
-    </div>
-    <div
-      class="mario-hat-shine bg-white/70 w-1.5 h-1 rounded-full absolute top-0.5 left-1.5"
-    >
+    <div class={`${colors.top} w-[60%] h-[30%] absolute bottom-0 right-0`}>
     </div>
   </div>
 
-  <div
-    class="mario-hair absolute top-[18%] left-0 w-full h-[10%] z-10 flex justify-between px-0.5"
-  >
-    <div class="bg-black w-1.5 h-full rounded-b-sm"></div>
-    <div class="bg-black w-1.5 h-full rounded-b-sm"></div>
-  </div>
+  <div class="mario-head w-[90%] h-[25%] mx-auto flex relative z-10">
+    <div class="w-[30%] h-[80%] bg-[#000] absolute top-[10%] left-0"></div>
 
-  <!-- face -->
-  <div class="mario-face bg-orange-200 w-full h-[20%] relative z-20 rounded-sm">
-    <div class="mario-eyes flex justify-between px-2.5 pt-1.5">
-      <div class="mario-eye bg-black w-1 h-1.5 rounded-full"></div>
-      <div class="mario-eye bg-black w-1 h-1.5 rounded-full"></div>
-    </div>
-
-    <div
-      class="mario-nose bg-orange-300 w-2.5 h-1.5 rounded-full mx-auto mt-0.5"
-    >
-    </div>
-
-    <!-- Mustache -->
-    <div
-      class="mario-mustache bg-black w-5 h-1.5 rounded-b-full mx-auto -mt-0.5 relative z-20"
-    >
-    </div>
-  </div>
-
-  <div
-    class={`mario-shirt ${colors.top} w-full h-[16%] relative z-10 flex justify-between items-center`}
-  >
-    <div
-      class="mario-glove bg-white w-2 h-2 rounded-full absolute -left-1 top-1/2 -translate-y-1/2 border border-black/10"
-    >
-    </div>
-
-    <div
-      class="mario-glove bg-white w-2 h-2 rounded-full absolute -right-1 top-1/2 -translate-y-1/2 border border-black/10"
-    >
-    </div>
-
-    <!-- Overall straps -->
-    <div
-      class={`mario-suspender ${colors.overalls} w-1.5 h-full absolute left-2`}
-    >
-    </div>
-    <div
-      class={`mario-suspender ${colors.overalls} w-1.5 h-full absolute right-2`}
-    >
-    </div>
-  </div>
-
-  <!-- overalls with buttons -->
-  <div
-    class={`mario-overalls ${colors.overalls} w-full h-[20%] relative z-20 rounded-t-sm`}
-  >
-    <div class="mario-buttons flex justify-center space-x-3 pt-1">
+    <div class={`${colors.skin} w-[60%] h-full absolute left-[30%]`}>
+      <div class="w-[15%] h-[40%] bg-[#000] absolute right-[20%] top-[15%]">
+      </div>
       <div
-        class={`mario-button ${colors.accent} w-1.5 h-1.5 rounded-full border border-black/20`}
+        class="w-[50%] h-[25%] bg-[#000] absolute right-[-20%] bottom-[20%] z-20"
       >
       </div>
       <div
-        class={`mario-button ${colors.accent} w-1.5 h-1.5 rounded-full border border-black/20`}
+        class={`${colors.skin} w-[30%] h-[35%] absolute right-[-30%] top-[25%] z-10 shadow-[-2px_2px_0_rgba(0,0,0,0.15)]`}
       >
       </div>
     </div>
   </div>
 
-  <!-- Legs / shoes -->
+  <div class="mario-body w-full h-[35%] relative z-20">
+    <div class={`${colors.top} w-[70%] h-[60%] mx-auto relative`}>
+      <div class={`${colors.overalls} w-[20%] h-full absolute left-[15%]`}>
+      </div>
+      <div class={`${colors.overalls} w-[20%] h-full absolute right-[15%]`}>
+      </div>
+    </div>
+
+    <div
+      class={`${colors.overalls} w-[70%] h-[40%] mx-auto relative flex justify-center space-x-2 pt-1`}
+    >
+      <div class={`${colors.accent} w-[15%] h-[40%]`}></div>
+      <div class={`${colors.accent} w-[15%] h-[40%]`}></div>
+    </div>
+
+    <div
+      class="w-[20%] h-[40%] bg-white absolute left-0 top-[20%] shadow-[2px_2px_0_rgba(0,0,0,0.1)]"
+    >
+    </div>
+    <div
+      class="w-[20%] h-[40%] bg-white absolute right-0 top-[20%] shadow-[-2px_2px_0_rgba(0,0,0,0.1)]"
+    >
+    </div>
+  </div>
+
   <div
-    class="mario-legs w-full h-[12%] flex justify-between px-1 relative z-10"
+    class="mario-legs w-[70%] h-[15%] mx-auto flex justify-between relative z-10"
   >
-    <div
-      class="mario-shoe bg-amber-800 w-[45%] h-full rounded-b-full border border-black/20"
-    >
-    </div>
-    <div
-      class="mario-shoe bg-amber-800 w-[45%] h-full rounded-b-full border border-black/20"
-    >
-    </div>
+    <div class="mario-shoe bg-[#000] w-[35%] h-full"></div>
+    <div class="mario-shoe bg-[#000] w-[35%] h-full"></div>
   </div>
 </div>
 
 <style>
-  .mario-jump {
-    animation: mario-jump-anim 0.6s ease-in-out infinite;
+  .mario-sprite {
+    image-rendering: pixelated;
   }
 
-  .mario-walk .mario-legs .mario-shoe:nth-child(1) {
-    animation: mario-step-left 0.4s ease-in-out infinite;
+  /* Animaciones estilo NES (sin fluidez, por cuadros de animación) */
+  .mario-jump {
+    animation: mario-jump-anim 0.4s steps(1) infinite;
   }
-  .mario-walk .mario-legs .mario-shoe:nth-child(2) {
-    animation: mario-step-right 0.4s ease-in-out infinite;
+
+  .mario-walk {
+    animation: mario-walk-bounce 0.3s steps(2) infinite;
+  }
+
+  .mario-walk .mario-shoe:nth-child(1) {
+    animation: mario-step-left 0.3s steps(1) infinite;
+  }
+
+  .mario-walk .mario-shoe:nth-child(2) {
+    animation: mario-step-right 0.3s steps(1) infinite;
   }
 
   @keyframes mario-jump-anim {
@@ -159,23 +139,34 @@ const colors = variantColors[variant];
     }
   }
 
+  @keyframes mario-walk-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5%);
+    }
+  }
+
+  /* Los pies ya no rotan, se desplazan verticalmente como los verdaderos sprites */
   @keyframes mario-step-left {
     0%,
     100% {
-      transform: translateY(0) rotate(0deg);
+      transform: translateY(0);
     }
     50% {
-      transform: translateY(-10%) rotate(-8deg);
+      transform: translateY(-40%);
     }
   }
 
   @keyframes mario-step-right {
     0%,
     100% {
-      transform: translateY(-10%) rotate(8deg);
+      transform: translateY(-40%);
     }
     50% {
-      transform: translateY(0) rotate(0deg);
+      transform: translateY(0);
     }
   }
 </style>
