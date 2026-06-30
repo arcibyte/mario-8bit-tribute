@@ -17,90 +17,83 @@ const {
 ---
 
 <header
-  class="bg-black text-white p-4 border-b-4 border-mario-yellow sticky top-0 z-50"
+  class="bg-black text-white p-4 border-b-4 border-[#f8b800] sticky top-0 z-50"
 >
   <div class="max-w-7xl mx-auto">
-    <!-- Mobile Header -->
     <div class="md:hidden">
-      <div class="flex justify-between items-center mb-2">
-        <h1 class="text-xl font-pixel font-bold text-mario-yellow pixel-text">
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="text-xl font-pixel font-bold text-[#f8b800] pixel-text">
           SUPER MARIO
         </h1>
-        <button id="menu-toggle" class="text-white hover:text-mario-yellow">
+        <button
+          id="menu-toggle"
+          class="text-white hover:text-[#f8b800] focus:outline-none"
+        >
           <svg
-            class="w-6 h-6"
+            class="w-6 h-6 image-render-pixel"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="3"
               d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
 
-      <!-- Mobile Stats -->
-      <div class="grid grid-cols-2 gap-2 text-sm font-pixel">
-        <div class="flex items-center space-x-1">
+      <div
+        class="grid grid-cols-2 gap-2 text-sm font-pixel bg-[#111] p-2 border-2 border-white"
+      >
+        <div class="flex items-center space-x-2">
           <div class="coin-small"></div>
-          <span class="text-mario-yellow">×{coins}</span>
+          <span class="text-[#f8b800]">×{coins}</span>
         </div>
-        <div class="text-mario-red">SC: {score.toLocaleString()}</div>
-        <div class="text-mario-green">W: {world}</div>
-        <div class="text-mario-blue">LIVES: {lives}</div>
+        <div class="text-[#d82800]">SC: {score}</div>
+        <div class="text-[#00a800]">W: {world}</div>
+        <div class="text-[#3cbcfc]">LIVES: {lives}</div>
       </div>
     </div>
 
-    <!-- Desktop Header -->
     <div class="hidden md:flex justify-between items-center">
-      <!-- Logo -->
       <div class="flex items-center space-x-4">
         <h1
-          class="text-4xl font-pixel font-bold text-mario-yellow pixel-text tracking-wider"
+          class="text-3xl font-pixel font-bold text-[#f8b800] pixel-text tracking-wider animate-pulse"
         >
           SUPER MARIO
         </h1>
-        <div class="mario-hat"></div>
       </div>
 
-      <!-- Navigation -->
-      <!-- Navigation -->
-      <nav class="hidden lg:flex items-center space-x-6 font-pixel">
+      <nav class="hidden lg:flex items-center space-x-2 font-pixel">
         <a href="/" class="nav-link">HOME</a>
         <a href="/gallery" class="nav-link">GALLERY</a>
         <a href="/timeline" class="nav-link">TIMELINE</a>
         <a href="/sounds" class="nav-link">SOUNDS</a>
       </nav>
 
-      <!-- Game Stats -->
-      <div class="flex items-center space-x-8 font-pixel text-lg">
-        <!-- Score -->
+      <div class="flex items-center space-x-8 font-pixel text-base">
         <div class="stat-item">
-          <div class="text-mario-red font-bold">SCORE</div>
-          <div class="text-white">{score.toLocaleString()}</div>
+          <div class="text-[#d82800] font-bold">SCORE</div>
+          <div class="text-white font-bold">{score}</div>
         </div>
 
-        <!-- Coins -->
         <div class="stat-item">
-          <div class="flex items-center space-x-2">
+          <div class="flex items-center space-x-2 mt-1">
             <div class="coin-animated"></div>
-            <span class="text-mario-yellow font-bold">×{coins}</span>
+            <span class="text-[#f8b800] font-bold">×{coins}</span>
           </div>
         </div>
 
-        <!-- World -->
         <div class="stat-item">
-          <div class="text-mario-green font-bold">WORLD</div>
-          <div class="text-white">{world}</div>
+          <div class="text-[#00a800] font-bold">WORLD</div>
+          <div class="text-white font-bold">{world}</div>
         </div>
 
-        <!-- Lives -->
         <div class="stat-item">
-          <div class="text-mario-blue font-bold">LIVES</div>
-          <div class="text-white flex items-center space-x-1">
+          <div class="text-[#3cbcfc] font-bold mb-1">LIVES</div>
+          <div class="flex items-center justify-center space-x-1">
             {
               Array.from({ length: lives }).map(() => (
                 <div class="mario-life" />
@@ -109,18 +102,16 @@ const {
           </div>
         </div>
 
-        <!-- Time -->
         <div class="stat-item">
-          <div class="text-mario-yellow font-bold">TIME</div>
-          <div class="text-white">{time}</div>
+          <div class="text-[#f8b800] font-bold">TIME</div>
+          <div class="text-white font-bold">{time}</div>
         </div>
       </div>
     </div>
 
-    <!-- Mobile Navigation Menu -->
     <nav
       id="mobile-menu"
-      class="md:hidden hidden mt-4 pt-4 border-t border-gray-600"
+      class="md:hidden hidden mt-4 pt-4 border-t-4 border-dashed border-gray-700"
     >
       <div class="flex flex-col space-y-2 font-pixel">
         <a href="/" class="nav-link-mobile">HOME</a>
@@ -132,145 +123,139 @@ const {
 </header>
 
 <style>
+  .font-pixel {
+    font-family: "Silkscreen", sans-serif;
+  }
+
   .pixel-text {
-    text-shadow:
-      2px 2px 0 #000,
-      -2px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 2px 0 #000;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+    text-shadow: 4px 4px 0px #000;
   }
 
   .coin-animated {
-    width: 20px;
+    width: 12px;
     height: 20px;
-    background: radial-gradient(circle, #ffd700 30%, #ffa500 70%);
-    border: 2px solid #000;
-    border-radius: 50%;
-    animation: coin-spin 2s linear infinite;
-    image-rendering: pixelated;
+    background: #f8b800;
+    box-shadow:
+      -4px 0 0 #000,
+      4px 0 0 #000,
+      0 -4px 0 #000,
+      0 4px 0 #000,
+      inset -2px -2px 0 #b87800,
+      inset 2px 2px 0 #fff;
+    animation: coin-spin 0.8s steps(4) infinite;
   }
 
   .coin-small {
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle, #ffd700 30%, #ffa500 70%);
-    border: 1px solid #000;
-    border-radius: 50%;
-    animation: coin-spin 2s linear infinite;
+    width: 8px;
+    height: 14px;
+    background: #f8b800;
+    box-shadow:
+      -2px 0 0 #000,
+      2px 0 0 #000,
+      0 -2px 0 #000,
+      0 2px 0 #000,
+      inset -1px -1px 0 #b87800;
+    animation: coin-spin 0.8s steps(4) infinite;
   }
 
   @keyframes coin-spin {
-    0% {
+    0%,
+    100% {
       transform: scaleX(1);
     }
     50% {
-      transform: scaleX(0.3);
-    }
-    100% {
-      transform: scaleX(1);
+      transform: scaleX(0.2);
+      background: #b87800;
     }
   }
 
   .mario-hat {
     width: 24px;
-    height: 24px;
-    background: linear-gradient(
-      45deg,
-      #ff0000 25%,
-      #ff6b6b 25%,
-      #ff6b6b 50%,
-      #ff0000 50%,
-      #ff0000 75%,
-      #ff6b6b 75%
-    );
-    background-size: 4px 4px;
-    border: 2px solid #000;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: float 3s ease-in-out infinite;
-    image-rendering: pixelated;
+    height: 16px;
+    background: #d82800;
+    position: relative;
+    box-shadow:
+      -4px 4px 0 #000,
+      4px 4px 0 #000,
+      0 -4px 0 #000,
+      0 4px 0 #000,
+      inset 4px 4px 0 #fff;
   }
 
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-4px);
-    }
+  .mario-hat::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    right: -6px;
+    width: 12px;
+    height: 4px;
+    background: #d82800;
+    box-shadow:
+      2px 2px 0 #000,
+      0 -2px 0 #000;
   }
 
   .mario-life {
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle, #ff0000 40%, #8b0000 80%);
-    border: 1px solid #000;
-    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background: #d82800;
+    box-shadow:
+      -2px 0 0 #000,
+      2px 0 0 #000,
+      0 -2px 0 #000,
+      0 2px 0 #000;
     position: relative;
   }
 
-  .mario-life::before {
+  .mario-life::after {
     content: "";
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #ffd700;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 2px;
+    left: 2px;
+    width: 4px;
+    height: 4px;
+    background: #fff;
   }
 
   .stat-item {
     text-align: center;
-    min-width: 60px;
+    min-width: 80px;
   }
 
   .nav-link {
     color: white;
     text-decoration: none;
-    padding: 8px 16px;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    position: relative;
+    padding: 6px 12px;
+    border: 4px solid transparent;
+    box-sizing: border-box;
   }
 
   .nav-link:hover {
-    color: #ffd700;
-    border-color: #ffd700;
-    background: rgba(255, 215, 0, 0.1);
-    transform: translateY(-2px);
+    color: #f8b800;
+    border-color: #f8b800;
+    background: #111;
+    transform: translateY(-4px);
   }
 
   .nav-link-mobile {
     color: white;
     text-decoration: none;
-    padding: 12px 0;
-    border-bottom: 1px solid #333;
-    transition: color 0.3s ease;
+    padding: 8px;
+    border: 2px solid transparent;
   }
 
   .nav-link-mobile:hover {
-    color: #ffd700;
+    color: #f8b800;
+    background: #111;
+    border-color: #f8b800;
   }
 
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .pixel-text {
-      text-shadow:
-        1px 1px 0 #000,
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000;
-    }
+  .image-render-pixel {
+    image-rendering: pixelated;
   }
 </style>
 
 <script>
-  // Mobile menu toggle
   document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -280,10 +265,5 @@ const {
         mobileMenu.classList.toggle("hidden");
       });
     }
-  });
-
-  // Add sound effect on hover (optional)
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.addEventListener("mouseenter", () => {});
   });
 </script>
