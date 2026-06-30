@@ -18,9 +18,9 @@ const {
 } = Astro.props;
 
 const sizeClasses = {
-  small: "w-6 h-6",
-  medium: "w-8 h-8",
-  large: "w-12 h-12",
+  small: "w-4 h-6",
+  medium: "w-6 h-8",
+  large: "w-10 h-14",
 };
 
 const positionClasses = {
@@ -38,15 +38,27 @@ const customStyle =
   class={`game-element ${sizeClasses[size]} ${positionClasses[position]} ${className} ${isCollected ? "element-collected" : ""}`}
   style={customStyle}
 >
-  <div
-    class="mario-coin bg-yellow-400 w-full h-full rounded-full border-2 border-black relative flex items-center justify-center"
-  >
+  <div class="mario-coin w-full h-full relative">
+    <div class="absolute inset-y-0 left-[15%] right-[15%] bg-[#000000]"></div>
+    <div class="absolute inset-x-0 top-[15%] bottom-[15%] bg-[#000000]"></div>
+
+    <div class="absolute inset-y-[15%] left-[15%] right-[15%] bg-[#f8b800]">
+    </div>
+    <div class="absolute inset-x-[15%] top-[15%] bottom-[15%] bg-[#f8b800]">
+    </div>
+
     <div
-      class="coin-inner bg-yellow-500 w-2/3 h-2/3 rounded-full flex items-center justify-center"
+      class="absolute left-[25%] top-[20%] bottom-[20%] w-[15%] bg-[#ffffff]"
     >
-      <span class="coin-symbol text-yellow-900 font-black text-xs leading-none"
-        >¢</span
-      >
+    </div>
+
+    <div
+      class="absolute right-[25%] top-[20%] bottom-[20%] w-[15%] bg-[#f87800]"
+    >
+    </div>
+    <div
+      class="absolute left-[35%] right-[35%] bottom-[25%] h-[15%] bg-[#f87800]"
+    >
     </div>
   </div>
 </div>
@@ -59,6 +71,23 @@ const customStyle =
     position: absolute;
     display: inline-block;
     z-index: 10;
+  }
+
+  .mario-coin {
+    animation: coin-spin 0.6s steps(3, end) infinite;
+  }
+
+  @keyframes coin-spin {
+    0% {
+      transform: scaleX(1);
+    }
+    50% {
+      /* Comprime la moneda horizontalmente para simular que gira de perfil */
+      transform: scaleX(0.1);
+    }
+    100% {
+      transform: scaleX(1);
+    }
   }
 
   .mario-ground-level {
